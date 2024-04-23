@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Zoom Clone
+
+A video conferencing application clone built with Next.js, TypeScript, Tailwind CSS, Clerk for authentication, and Stream for meetings.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+This project is a clone of the popular video conferencing application Zoom. It allows users to create and join meetings, chat with other participants, and share their screens.
+
+## Features
+
+- User authentication with Clerk
+- Video conferencing with Stream
+- Screen sharing
+- Chat functionality
+- Responsive design
+
+## Technologies Used
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Clerk
+- Stream
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js and npm installed
+- Clerk account for authentication
+- Stream account for video conferencing
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+   ```bash
+   git clone https://github.com/ArnaudBand/zoom-clone.git
+   cd zoom-clone
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Install dependencies
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. Set up environment variables
+   - Create a `.env.local` file in the root of the project
+   - Add the following environment variables:
+     ```plaintext
+     CLERK_FRONTEND_API_KEY=your_clerk_frontend_api_key
+     CLERK_API_KEY=your_clerk_api_key
+     CLERK_API_URL=your_clerk_api_url
+     STREAM_API_KEY=your_stream_api_key
+     STREAM_API_SECRET=your_stream_api_secret
+     ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the development server
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open your browser and navigate to `http://localhost:3000` to see the app running
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+1. Register for an account or log in with Clerk
+2. Start a new meeting or join an existing one
+3. Enjoy video conferencing with friends and colleagues!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions are welcome! Please follow the [contribution guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
