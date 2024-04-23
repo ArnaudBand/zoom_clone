@@ -19,7 +19,7 @@ const MobileNav = () => {
         <section className='w-full max-w-[264px]'>
             <Sheet>
                 <SheetTrigger asChild>
-                    <Image src={'/icons/hamburger.svg'} alt={'menu'} width={24} height={24} className='cursor-pointer sm:hidden' />
+                    <Image src='/icons/hamburger.svg' alt={'menu'} width={32} height={32} className='cursor-pointer sm:hidden' />
                 </SheetTrigger>
                 <SheetContent side={'left'} className='border-none bg-dark-1'>
                     <Link href={'/'} className='flex items-center gap-1'>
