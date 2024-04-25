@@ -2,7 +2,9 @@
 
 import React, { useState } from 'react';
 import {
-    PaginatedGridLayout, SpeakerLayout, CallParticipantsList, CallControls, CallStatsButton
+    PaginatedGridLayout, SpeakerLayout, CallParticipantsList, CallControls, CallStatsButton,
+    useCallStateHooks,
+    CallingState
 } from '@stream-io/video-react-sdk';
 import { cn } from "@/lib/utils";
 import {
@@ -16,6 +18,7 @@ import {
 import { LayoutList, User } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import EndCallButton from './EndCallButton';
+import Loader from './Loader';
 
 type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right';
 
@@ -26,6 +29,11 @@ const MeetingRoom = () => {
 
     const searchParams = useSearchParams();
     const isPersonalRoom = !!searchParams.get('personal');
+
+    const { useCallCallingState } = useCallStateHooks();
+    const callState = useCallCallingState();
+
+    if (callState != CallingState.JOINED) return <Loader />;
 
     const CallLayout = () => {
         switch (layout) {
