@@ -5,6 +5,7 @@ import { Call, CallRecording } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import MeetingCard from "./MeetingCard";
+import Loader from "./Loader";
 
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const { endedCalls, upcomingCalls, recordingCalls, isLoading } = useGetCalls();
@@ -39,6 +40,9 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   }
   const calls = getCalls();
   const noCallsMessage = getNoCallsMessage();
+
+  if (isLoading) return <Loader />;
+  
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? calls.map((meeting: Call | CallRecording) => (
