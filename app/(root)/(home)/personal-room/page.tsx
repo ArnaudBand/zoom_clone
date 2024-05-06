@@ -1,9 +1,12 @@
 "use client";
 
+import React from 'react';
+import { useUser } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import { useUser } from '@clerk/nextjs';
-import React from 'react';
+import { useGetCallById } from '@/hooks/useGetCallById';
+import { useStreamVideoClient } from '@stream-io/video-react-sdk';
+import { useRouter } from 'next/navigation';
 
 const Table = ({ title, description }: { title: string; description: string | undefined }) => (
   <div className="flex flex-col items-start gap-2 xl:flex-row">
@@ -19,10 +22,27 @@ const PersonalRoom = () => {
 
   const { toast } = useToast();
 
+  const client = useStreamVideoClient();
+
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
 
+  const { call } = useGetCallById(meetingId!);
+
+  const router = useRouter();
+
   const startRoom = async () => {
-    
+    if (!user || !client) return;
+
+    const newCall = client.call('default', meetingId!);
+
+    if (!call) {
+      await newCall.getOrCreate({
+        data: {
+          starts_at: new Date().toISOString(),
+        }
+      })
+    }
+    router.push(`/meeting/${meetingId}?personal=true`)
   };
 
   return (
